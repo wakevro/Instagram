@@ -37,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
     private Button btnCaptureImage;
     private Button btnSubmit;
     private ImageView ivPostImage;
+    private ImageView ivHome;
     private File photoFile;
     public String photoFileName = "photo.jpg";
 
@@ -49,6 +50,15 @@ public class MainActivity extends AppCompatActivity {
         btnCaptureImage = findViewById(R.id.btnCaptureImage);
         btnSubmit = findViewById(R.id.btnSubmit);
         ivPostImage = findViewById(R.id.ivPostImage);
+        ivHome = findViewById(R.id.ivHome);
+
+        ivHome.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, FeedActivity.class);
+                startActivity(intent);
+            }
+        });
         
         btnCaptureImage.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -71,6 +81,7 @@ public class MainActivity extends AppCompatActivity {
                 }
                 ParseUser currentuser = ParseUser.getCurrentUser();
                 savePost(description, currentuser, photoFile);
+                Toast.makeText(MainActivity.this, "Post was successful.", Toast.LENGTH_SHORT).show();
             }
         });
 
