@@ -4,6 +4,32 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="20dp"
     tools:context=".DetailsActivity">
 
+    <TextView
+        android:id="@+id/tvDetailsUsername"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="@string/username" />
+
+    <TextView
+        android:id="@+id/tvDetailsDescription"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        app:layout_constraintStart_toStartOf="@+id/tvDetailsUsername"
+        app:layout_constraintTop_toBottomOf="@+id/tvDetailsUsername"
+        tools:text="@string/description" />
+
+    <TextView
+        android:id="@+id/tvDetailsCreatedAt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        app:layout_constraintStart_toStartOf="@+id/tvDetailsDescription"
+        app:layout_constraintTop_toBottomOf="@+id/tvDetailsDescription"
+        tools:text="@string/created_at" />
 </androidx.constraintlayout.widget.ConstraintLayout>
