@@ -9,9 +9,9 @@ import android.widget.Button;
 
 import com.parse.ParseUser;
 
-public class LogoutActivity extends AppCompatActivity {
+public class ProfileActivity extends AppCompatActivity {
 
-    public static final String TAG = "LogoutActivity";
+    public static final String TAG = "ProfileActivity";
 
     Button btnLogout;
 

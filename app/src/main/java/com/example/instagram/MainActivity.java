@@ -1,9 +1,11 @@
 package com.example.instagram;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.FileProvider;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -12,12 +14,14 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseFile;
@@ -37,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
     private Button btnCaptureImage;
     private Button btnSubmit;
     private ImageView ivPostImage;
-    private ImageView ivHome;
+    private BottomNavigationView bottomNavigationView;
     private File photoFile;
     public String photoFileName = "photo.jpg";
 
@@ -50,16 +54,8 @@ public class MainActivity extends AppCompatActivity {
         btnCaptureImage = findViewById(R.id.btnCaptureImage);
         btnSubmit = findViewById(R.id.btnSubmit);
         ivPostImage = findViewById(R.id.ivPostImage);
-        ivHome = findViewById(R.id.ivHome);
+        bottomNavigationView = findViewById(R.id.bottomNavigation);
 
-        ivHome.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, FeedActivity.class);
-                startActivity(intent);
-            }
-        });
-        
         btnCaptureImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -82,6 +78,23 @@ public class MainActivity extends AppCompatActivity {
                 ParseUser currentuser = ParseUser.getCurrentUser();
                 savePost(description, currentuser, photoFile);
                 Toast.makeText(MainActivity.this, "Post was successful.", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        bottomNavigationView.setOnItemSelectedListener(new BottomNavigationView.OnItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()) {
+                    case R.id.miHome:
+                        Intent homeIntent = new Intent(MainActivity.this, FeedActivity.class);
+                        startActivity(homeIntent);
+                        return true;
+                    case R.id.miProfile:
+                        Intent profileIntent = new Intent(MainActivity.this, ProfileActivity.class);
+                        startActivity(profileIntent);
+                        return true;
+                    default: return true;
+                }
             }
         });
 
