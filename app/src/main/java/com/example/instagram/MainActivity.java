@@ -58,13 +58,9 @@ public class MainActivity extends AppCompatActivity {
                 Fragment fragment;
                 switch (item.getItemId()) {
                     case R.id.miHome:
-//                        Intent homeIntent = new Intent(MainActivity.this, FeedActivity.class);
-//                        startActivity(homeIntent);
                         fragment = new PostsFragment();
                         break;
                     case R.id.miProfile:
-//                        Intent profileIntent = new Intent(MainActivity.this, ProfileActivity.class);
-//                        startActivity(profileIntent);
                         fragment = new ComposeFragment();
                         break;
                     case R.id.miAddPost:
