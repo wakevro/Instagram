@@ -36,6 +36,5 @@ public class DetailsActivity extends AppCompatActivity {
         tvDetailsCreatedAt.setText(timeAgo);
 
 
-
     }
 }
