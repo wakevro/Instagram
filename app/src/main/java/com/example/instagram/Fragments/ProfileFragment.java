@@ -5,6 +5,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -14,6 +15,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
+import com.bumptech.glide.Glide;
 import com.example.instagram.Post;
 import com.example.instagram.PostsAdapter;
 import com.example.instagram.R;
@@ -33,6 +35,7 @@ public class ProfileFragment extends Fragment {
     protected RecyclerView rvPosts;
     protected ArrayList<Post> allPosts;
     protected PostsAdapter adapter;
+    private ImageView ivProfilePicture;
 
     public ProfileFragment() {
         // Required empty public constructor
@@ -48,6 +51,12 @@ public class ProfileFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        ivProfilePicture = view.findViewById(R.id.ivProfilePicture);
+
+        Glide.with(getContext()).load(R.drawable.instagram_home_filled).into(ivProfilePicture);
+
+
         swipeContainer = (SwipeRefreshLayout) view.findViewById(R.id.swipeContainer);
         swipeContainer.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
@@ -71,6 +80,9 @@ public class ProfileFragment extends Fragment {
         rvPosts.setLayoutManager(new GridLayoutManager(getContext(), 2, GridLayoutManager.VERTICAL, false));
         // query posts from Instagram
         queryPosts();
+
+
+
     }
 
     private void fetchTimelineAsync(int i) {

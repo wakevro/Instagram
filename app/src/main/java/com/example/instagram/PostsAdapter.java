@@ -27,6 +27,7 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> 
     private Context context;
     private List<Post> posts;
 
+
     public PostsAdapter(Context context, List<Post> posts) {
         this.context = context;
         this.posts = posts;
@@ -71,10 +72,12 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> 
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
+
             tvFeedUsername = itemView.findViewById(R.id.tvFeedUsername);
             tvFeedDescription = itemView.findViewById(R.id.tvFeedDescription);
             ivFeedImage = itemView.findViewById(R.id.ivFeedImage);
             tvSmallUsername = itemView.findViewById(R.id.tvSmallUsername);
+
 
             itemView.setOnClickListener((v) ->  {
                 int position = getAdapterPosition();

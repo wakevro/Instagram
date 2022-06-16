@@ -13,6 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.content.FileProvider;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 
 import android.os.Environment;
 import android.provider.MediaStore;
@@ -25,6 +26,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.example.instagram.DetailsActivity;
 import com.example.instagram.MainActivity;
 import com.example.instagram.Post;
 import com.example.instagram.R;
@@ -48,6 +50,7 @@ public class ComposeFragment extends Fragment {
     private ImageView ivPostImage;
     private File photoFile;
     public String photoFileName = "photo.jpg";
+
 
     public ComposeFragment() {
         // Required empty public constructor
@@ -90,6 +93,9 @@ public class ComposeFragment extends Fragment {
                 ParseUser currentuser = ParseUser.getCurrentUser();
                 savePost(description, currentuser, photoFile);
                 Toast.makeText(getContext(), "Post was successful.", Toast.LENGTH_SHORT).show();
+
+
+
             }
         });
     }
