@@ -29,14 +29,13 @@ public class PostsFragment extends Fragment {
     public static final String TAG = "PostsActivity";
     private SwipeRefreshLayout swipeContainer;
 
-    RecyclerView rvPosts;
-    ArrayList<Post> allPosts;
-    PostsAdapter adapter;
+    protected RecyclerView rvPosts;
+    protected ArrayList<Post> allPosts;
+    protected PostsAdapter adapter;
 
     public PostsFragment() {
         // Required empty public constructor
     }
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -79,7 +78,7 @@ public class PostsFragment extends Fragment {
         swipeContainer.setRefreshing(false);
     }
 
-    private void queryPosts() {
+    protected void queryPosts() {
         // specify what type of data we want to query - Post.class
         ParseQuery<Post> query = ParseQuery.getQuery(Post.class);
         // include data referred by user key
@@ -97,12 +96,10 @@ public class PostsFragment extends Fragment {
                     Log.e(TAG, "Issue with getting posts", e);
                     return;
                 }
-
                 // for debugging purposes let's print every post description to logcat
                 for (Post post : posts) {
                     Log.i(TAG, "Post: " + post.getDescription() + ", username: " + post.getUser().getUsername());
                 }
-
                 // save received posts to list and notify adapter of new data
                 allPosts.addAll(posts);
                 adapter.notifyDataSetChanged();

@@ -10,6 +10,8 @@
         android:id="@+id/tvFeedUsername"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:paddingStart="10dp"
+        android:paddingEnd="10dp"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         tools:text="@string/username" />
 
@@ -17,6 +19,8 @@
         android:id="@+id/ivFeedImage"
         android:layout_width="match_parent"
         android:layout_height="300dp"
+        android:paddingStart="10dp"
+        android:paddingEnd="10dp"
         android:scaleType="centerCrop"
         tools:srcCompat="@tools:sample/avatars" />
 
@@ -25,5 +29,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
+        android:paddingStart="10dp"
+        android:paddingEnd="10dp"
         tools:text="@string/description" />
 </LinearLayout>

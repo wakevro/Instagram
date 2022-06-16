@@ -20,7 +20,8 @@
         android:textColorHint="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:autofillHints="name" />
 
     <EditText
         android:id="@+id/etPasswordLogin"
@@ -30,11 +31,12 @@
         android:ems="10"
         android:hint="@string/password"
         android:inputType="textPersonName|textPassword"
-        android:textColor="@color/white"
-        android:textColorHint="@color/white"
+        android:textColor="@color/black"
+        android:textColorHint="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/etUsernameLogin"
-        app:layout_constraintTop_toBottomOf="@+id/etUsernameLogin" />
+        app:layout_constraintTop_toBottomOf="@+id/etUsernameLogin"
+        android:autofillHints="password" />
 
     <Button
         android:id="@+id/btnLogin"
