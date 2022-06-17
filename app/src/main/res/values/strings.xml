@@ -11,4 +11,7 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="uploaded_image">Uploaded Image</string>
+    <string name="capture_your_moment">Capture your moment!</string>
+    <string name="what_s_your_update">What\'s your update?</string>
+    <string name="create">Create!</string>
 </resources>

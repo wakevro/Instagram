@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.parse.ParseFile;
 
 import org.parceler.Parcels;
@@ -68,6 +69,7 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> 
         private TextView tvFeedUsername;
         private TextView tvFeedDescription;
         private ImageView ivFeedImage;
+        private ImageView ivPostProfilePicture;
         private TextView tvSmallUsername;
 
         public ViewHolder(@NonNull View itemView) {
@@ -76,6 +78,7 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> 
             tvFeedUsername = itemView.findViewById(R.id.tvFeedUsername);
             tvFeedDescription = itemView.findViewById(R.id.tvFeedDescription);
             ivFeedImage = itemView.findViewById(R.id.ivFeedImage);
+            ivPostProfilePicture = itemView.findViewById(R.id.ivPostProfilePicture);
             tvSmallUsername = itemView.findViewById(R.id.tvSmallUsername);
 
 
@@ -98,8 +101,13 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> 
             tvFeedUsername.setText(post.getUser().getUsername());
             tvSmallUsername.setText(post.getUser().getUsername());
             ParseFile image = post.getImage();
+            ParseFile profilePicture = post.getProfilePicture();
             if (image != null) {
                 Glide.with(context).load(image.getUrl()).into(ivFeedImage);
+
+            }
+            if (profilePicture != null) {
+                Glide.with(context).load(image.getUrl()).transform(new RoundedCorners(80)).into(ivPostProfilePicture);
 
             }
         }

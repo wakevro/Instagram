@@ -16,9 +16,11 @@
 
         <ImageView
             android:id="@+id/imageView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:srcCompat="@drawable/nav_logo_whiteout" />
+            android:layout_width="130dp"
+            android:layout_height="45dp"
+            app:srcCompat="@drawable/nav_logo_whiteout"
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="5dp" />
 
         <TextView
             android:id="@+id/tvLogout"
