@@ -14,6 +14,7 @@ import androidx.annotation.Nullable;
 import androidx.core.content.FileProvider;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.os.Environment;
 import android.provider.MediaStore;
@@ -94,6 +95,12 @@ public class ComposeFragment extends Fragment {
                 savePost(description, currentuser, photoFile);
                 Toast.makeText(getContext(), "Post was successful.", Toast.LENGTH_SHORT).show();
 
+                Fragment fragment = new PostsFragment();
+                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                fragmentTransaction.replace(R.id.flContainer, fragment);
+                fragmentTransaction.addToBackStack(null);
+                fragmentTransaction.commit();
 
 
             }
