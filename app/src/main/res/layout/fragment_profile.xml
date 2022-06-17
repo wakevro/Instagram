@@ -14,7 +14,7 @@
             android:id="@+id/ivProfilePicture"
             android:layout_width="60dp"
             android:layout_height="60dp"
-            android:layout_above="@+id/swipeContainer"
+            android:layout_above="@+id/rvProfilePosts"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
             android:layout_marginStart="16dp"
@@ -36,7 +36,7 @@
             android:textStyle="bold" />
 
         <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-            android:id="@+id/swipeContainer"
+            android:id="@+id/rvMainProfilePosts"
             android:layout_width="match_parent"
             android:layout_height="607dp"
             android:layout_alignParentEnd="true"
@@ -47,10 +47,10 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rvPosts"
+                android:id="@+id/rvMainPosts"
                 android:layout_width="match_parent"
                 android:layout_height="661dp"
-                app:layout_constraintBottom_toBottomOf="@id/swipeContainer"
+                app:layout_constraintBottom_toBottomOf="@id/rvProfilePosts"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@id/clMain">

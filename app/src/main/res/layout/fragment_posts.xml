@@ -7,7 +7,7 @@
     tools:context=".Fragments.PostsFragment">
 
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-        android:id="@+id/swipeContainer"
+        android:id="@+id/rvProfilePosts"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -17,7 +17,7 @@
             android:id="@+id/rvPosts"
             android:layout_width="match_parent"
             android:layout_height="661dp"
-            app:layout_constraintBottom_toBottomOf="@id/swipeContainer"
+            app:layout_constraintBottom_toBottomOf="@id/rvProfilePosts"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@id/clMain" />
