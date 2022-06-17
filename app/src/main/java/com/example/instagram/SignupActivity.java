@@ -63,7 +63,6 @@ public class SignupActivity extends AppCompatActivity {
     private void singUpUser(String username, String password) {
         Log.i(TAG, "Attempting to sign up user: " + username);
         ParseUser user = new ParseUser();
-        // Set the user's username and password, which can be obtained by a forms
         user.setUsername(username);
         user.setPassword(password);
         user.signUpInBackground(new SignUpCallback() {
