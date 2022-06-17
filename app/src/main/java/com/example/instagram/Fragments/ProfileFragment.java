@@ -6,12 +6,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
@@ -36,15 +36,14 @@ public class ProfileFragment extends Fragment {
     protected ArrayList<Post> allPosts;
     protected PostsAdapter adapter;
     private ImageView ivProfilePicture;
+    private TextView tvProfileUsername;
 
     public ProfileFragment() {
-        // Required empty public constructor
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_profile, container, false);
     }
 
@@ -53,6 +52,8 @@ public class ProfileFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         ivProfilePicture = view.findViewById(R.id.ivProfilePicture);
+        tvProfileUsername = view.findViewById(R.id.tvProfileUsername);
+        tvProfileUsername.setText(ParseUser.getCurrentUser().getUsername());
 
         Glide.with(getContext()).load(R.drawable.instagram_home_filled).into(ivProfilePicture);
 
@@ -74,14 +75,12 @@ public class ProfileFragment extends Fragment {
         allPosts = new ArrayList<>();
         adapter = new PostsAdapter(getContext(), allPosts);
 
-        // set the adapter on the recycler view
+        adapter.clear();
+
+
         rvPosts.setAdapter(adapter);
-        // set the layout manager on the recycler view
         rvPosts.setLayoutManager(new GridLayoutManager(getContext(), 3, GridLayoutManager.VERTICAL, false));
-        // query posts from Instagram
         queryPosts();
-
-
 
     }
 
@@ -92,29 +91,21 @@ public class ProfileFragment extends Fragment {
     }
 
     protected void queryPosts() {
-        // specify what type of data we want to query - Post.class
         ParseQuery<Post> query = ParseQuery.getQuery(Post.class);
-        // include data referred by user key
         query.include(Post.KEY_USER);
         query.whereEqualTo(Post.KEY_USER, ParseUser.getCurrentUser());
-        // limit query to latest 20 items
         query.setLimit(20);
-        // order posts by creation date (newest first)
         query.addDescendingOrder("createdAt");
-        // start an asynchronous call for posts
         query.findInBackground(new FindCallback<Post>() {
             @Override
             public void done(List<Post> posts, ParseException e) {
-                // check for errors
                 if (e != null) {
                     Log.e(TAG, "Issue with getting posts", e);
                     return;
                 }
-                // for debugging purposes let's print every post description to logcat
                 for (Post post : posts) {
                     Log.i(TAG, "Post: " + post.getDescription() + ", username: " + post.getUser().getUsername());
                 }
-                // save received posts to list and notify adapter of new data
                 allPosts.addAll(posts);
                 adapter.notifyDataSetChanged();
             }
@@ -122,8 +113,3 @@ public class ProfileFragment extends Fragment {
     }
 
 }
-
-
-//rvPosts.setLayoutManager(new GridLayoutManager(getContext(), 2, GridLayoutManager.VERTICAL, false));
-
-//query.whereEqualTo(Post.KEY_USER, ParseUser.getCurrentUser());

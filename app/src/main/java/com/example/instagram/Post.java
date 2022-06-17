@@ -62,19 +62,19 @@ public class Post extends ParseObject {
 
             final long diff = now - time;
             if (diff < MINUTE_MILLIS) {
-                return (diff % MINUTE_MILLIS) / 1000 + "s";
+                return (diff % MINUTE_MILLIS) / 1000 + " seconds ago";
             } else if (diff < 2 * MINUTE_MILLIS) {
-                return "1m";
+                return "1 minute ago";
             } else if (diff < 50 * MINUTE_MILLIS) {
-                return diff / MINUTE_MILLIS + "m";
+                return diff / MINUTE_MILLIS + " minutes ago";
             } else if (diff < 90 * MINUTE_MILLIS) {
-                return "1h";
+                return "1 hour ago";
             } else if (diff < 24 * HOUR_MILLIS) {
-                return diff / HOUR_MILLIS + "h";
+                return diff / HOUR_MILLIS + " hours ago";
             } else if (diff < 48 * HOUR_MILLIS) {
-                return "1d";
+                return "1 day ago";
             } else {
-                return diff / DAY_MILLIS + "d";
+                return diff / DAY_MILLIS + " days ago";
             }
 
         } catch (Exception e) {

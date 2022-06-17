@@ -15,10 +15,12 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
+import com.example.instagram.Fragments.PostsFragment;
 import com.parse.ParseFile;
 
 import org.parceler.Parcels;
 
+import java.util.Date;
 import java.util.List;
 
 
@@ -71,6 +73,7 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> 
         private ImageView ivFeedImage;
         private ImageView ivPostProfilePicture;
         private TextView tvSmallUsername;
+        private TextView tvTimestamp;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -80,6 +83,7 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> 
             ivFeedImage = itemView.findViewById(R.id.ivFeedImage);
             ivPostProfilePicture = itemView.findViewById(R.id.ivPostProfilePicture);
             tvSmallUsername = itemView.findViewById(R.id.tvSmallUsername);
+            tvTimestamp = itemView.findViewById(R.id.tvTimestamp);
 
 
             itemView.setOnClickListener((v) ->  {
@@ -97,9 +101,15 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> 
         }
 
         public void bind(Post post) {
+
+
+            Date createdAt = post.getCreatedAt();
+            String timeAgo = Post.calculateTimeAgo(createdAt);
+
             tvFeedDescription.setText(post.getDescription());
             tvFeedUsername.setText(post.getUser().getUsername());
             tvSmallUsername.setText(post.getUser().getUsername());
+            tvTimestamp.setText(timeAgo);
             ParseFile image = post.getImage();
             ParseFile profilePicture = post.getProfilePicture();
             if (image != null) {

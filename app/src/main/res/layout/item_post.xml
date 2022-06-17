@@ -56,7 +56,7 @@
         android:id="@+id/tvSmallUsername"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="3dp"
         android:layout_marginBottom="35dp"
         android:textColor="@color/black"
         android:textSize="14sp"
@@ -64,7 +64,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/tvFeedDescription"
         app:layout_constraintStart_toStartOf="@+id/ivLike"
-        app:layout_constraintTop_toBottomOf="@+id/ivLike"
+        app:layout_constraintTop_toBottomOf="@+id/tvLikedBy"
         app:layout_constraintVertical_bias="1.0"
         tools:text="@string/username" />
 
@@ -72,8 +72,8 @@
         android:id="@+id/ivLike"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="12dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="16dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ivFeedImage"
         app:srcCompat="@drawable/ufi_heart" />
@@ -91,10 +91,10 @@
         android:id="@+id/ivSend"
         android:layout_width="35dp"
         android:layout_height="30dp"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="31dp"
+        android:layout_marginStart="14dp"
+        android:layout_marginTop="-2dp"
         app:layout_constraintStart_toEndOf="@+id/ivComment"
-        app:layout_constraintTop_toBottomOf="@+id/ivFeedImage"
+        app:layout_constraintTop_toTopOf="@+id/ivComment"
         app:srcCompat="@drawable/ufi_new_direct" />
 
     <ImageView
@@ -111,13 +111,13 @@
         android:id="@+id/tvLikedBy"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="12dp"
-        android:layout_marginTop="6dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="3dp"
         android:text="Liked by"
         android:textColor="@color/black"
         android:textSize="12sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ivFeedImage" />
+        app:layout_constraintTop_toBottomOf="@+id/ivLike" />
 
     <TextView
         android:id="@+id/tvWakevro"
@@ -166,4 +166,14 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/menu" />
+
+    <TextView
+        android:id="@+id/tvTimestamp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="3dp"
+        android:text="timestamp"
+        android:textSize="12sp"
+        app:layout_constraintStart_toStartOf="@+id/tvSmallUsername"
+        app:layout_constraintTop_toBottomOf="@+id/tvSmallUsername" />
 </androidx.constraintlayout.widget.ConstraintLayout>
