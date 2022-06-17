@@ -117,7 +117,7 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> 
 
             }
             if (profilePicture != null) {
-                Glide.with(context).load(image.getUrl()).transform(new RoundedCorners(80)).into(ivPostProfilePicture);
+                Glide.with(context).load(profilePicture.getUrl()).transform(new RoundedCorners(80)).into(ivPostProfilePicture);
 
             }
         }
