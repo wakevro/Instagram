@@ -46,8 +46,8 @@
         android:layout_width="319dp"
         android:layout_height="57dp"
         android:layout_marginTop="84dp"
-        android:text="@string/login"
         android:background="@android:color/holo_blue_bright"
+        android:text="@string/sign_up"
         android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="@+id/etPasswordSignup"
         app:layout_constraintHorizontal_bias="0.498"
@@ -66,23 +66,12 @@
         app:srcCompat="@drawable/nav_logo_whiteout" />
 
     <TextView
-        android:id="@+id/tvForgotPassword"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:text="Forgot password?"
-        android:textColor="@android:color/holo_blue_dark"
-        android:textSize="12sp"
-        app:layout_constraintEnd_toEndOf="@+id/etPasswordSignup"
-        app:layout_constraintTop_toBottomOf="@+id/etPasswordSignup" />
-
-    <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="10dp"
         android:layout_marginBottom="20dp"
-        android:text="Don't have an account?"
+        android:text="Already have an account?"
         android:textColor="@android:color/darker_gray"
         android:textSize="12sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -92,7 +81,7 @@
         android:id="@+id/tvLogin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Sign Up."
+        android:text="Log in."
         android:textColor="@android:color/holo_blue_dark"
         android:textSize="12sp"
         app:layout_constraintBottom_toBottomOf="@+id/textView2"
