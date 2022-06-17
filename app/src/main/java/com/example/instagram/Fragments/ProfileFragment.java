@@ -14,7 +14,10 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.example.instagram.Post;
 import com.example.instagram.PostsAdapter;
 import com.example.instagram.ProfileAdapter;
@@ -35,6 +38,8 @@ public class ProfileFragment extends Fragment {
     protected RecyclerView rvMainPosts;
     protected ArrayList<Post> allPosts;
     protected ProfileAdapter profileAdapter;
+    private ImageView ivProfilePicture;
+    private TextView tvProfileUsername;
 
     public ProfileFragment() {
         // Required empty public constructor
@@ -50,6 +55,12 @@ public class ProfileFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        ivProfilePicture = view.findViewById(R.id.ivProfilePicture);
+        tvProfileUsername = view.findViewById(R.id.tvProfileUsername);
+        tvProfileUsername.setText(ParseUser.getCurrentUser().getUsername());
+
+        Glide.with(getContext()).load(R.drawable.instagram_home_filled).into(ivProfilePicture);
+
         swipeContainer = (SwipeRefreshLayout) view.findViewById(R.id.rvMainProfilePosts);
         swipeContainer.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
